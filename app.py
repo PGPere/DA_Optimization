@@ -11,7 +11,7 @@ def build_graph():
         ('C', 'E', 50),
         ('D', 'E', 10),
         ('E', 'Destination', 60),
-        ('D', 'Destination', 80)
+        ('D', 'Destination', 60)
     ]
     G = nx.Graph()
     G.add_weighted_edges_from(edges)
