@@ -11,13 +11,13 @@ def build_graph():
         ('C', 'E', 50),
         ('D', 'E', 10),
         ('E', 'Destination', 60),
-        ('D', 'Destination', 60)
+        ('D', 'Destination', 80)
     ]
     G = nx.Graph()
     G.add_weighted_edges_from(edges)
     return G
 
-def shortest_path(G, source='Origin', target='Destination'):
+def shortest_path(G, source, target):
     path = nx.dijkstra_path(G, source=source, target=target, weight='weight')
     distance = nx.dijkstra_path_length(G, source=source, target=target, weight='weight')
     return path, distance
@@ -38,14 +38,22 @@ def main():
     st.title("Shortest Path Finder Between Towns")
 
     G = build_graph()
-    path, distance = shortest_path(G)
+    all_nodes = list(G.nodes)
 
-    st.markdown("### Shortest Path")
-    st.write(" → ".join(path))
-    st.write(f"Total Distance: {distance} miles")
+    source = st.selectbox("Select Origin Town:", all_nodes, index=all_nodes.index("Origin"))
+    target = st.selectbox("Select Destination Town:", all_nodes, index=all_nodes.index("Destination"))
 
-    st.markdown("### Network Graph")
-    draw_graph(G, path)
+    if source == target:
+        st.warning("Origin and destination cannot be the same.")
+    else:
+        path, distance = shortest_path(G, source, target)
+
+        st.markdown("### Shortest Path")
+        st.write(" → ".join(path))
+        st.write(f"Total Distance: {distance} miles")
+
+        st.markdown("### Network Graph")
+        draw_graph(G, path)
 
 if __name__ == '__main__':
     main()
