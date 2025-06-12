@@ -1,4 +1,6 @@
-git add app.py
-git commit -m "Update Streamlit app with interactive inputs"
-git push origin main
+streamlit==1.24.1
+networkx>=2.8
+pandas
+matplotlib
+
 
