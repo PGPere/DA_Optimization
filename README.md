@@ -1,4 +1,4 @@
 # DA_Optimization
-# Practice_App using Streamlit
-# copy and paste to browser => 
+## Network Visual using Streamlit
+[▶️ Launch the live demo](https://fz6prwwyqwqeiaiypqupe8.streamlit.app/)
 
